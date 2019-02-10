@@ -1,6 +1,6 @@
 ﻿namespace BSODPrank
 {
-    partial class Form1
+    partial class BSOD
     {
         /// <summary>
         /// Required designer variable.

@@ -1,0 +1,24 @@
+language: csharp
+mono: none
+solution: BSODPrank.sln
+dotnet: 4.5.0
+script:
+- msbuild /p:Configuration=Debug BSODPrank.sln
+- dotnet restore
+before_deploy: echo 'Starting the deploy...'
+deploy:
+  provider: releases
+  api_key:
+    secure: QBxJAt+PtzRAtG5WT6UHaYNUX4oMvP/RoL/9NQTJxJUjrpKMePjNS/HXn3z1juEuxHGsW6Cq8IzaFqf3+r9qkYe8VrMaU784wTOpJZJKjLt5GrkbQ52deOORctAzfwYCG2djL2G7VRkmaipEyJsefHNjr1QfVhq1JagJ2E9W/TdWP0v0hwSO1x1f2OYi3z5kVBpeqQfTXCRqkH392yvswZeSR5ONv/Asstuoz74dG0xhpDtLcdBS9R6OGVkrZRWmCYcPcH9yDD6yhVYIFbk4HnHShjk1ltcHxHbvpqx6bJaojlKgHhzI54rjE//TcGSLugSjnpXKnI6N6zmj42DOw3OEDKNpzQYkJkDma0DGoIRR9oyMHm1OMFbh+IEd/hSoVXa5C1mpIK1j1Zst8sityuwfvCBPwgGrYmb8+WR0CVdt9FPkea7sgbZmtm7lWDgJ0vLnC7yKAw/hbotUtFTPPuOCK8hMvkcpN8/T+oIzYrTaS2BZn4I+iIFh6vW+ub72mPmo0ZI0X2GlgvMrZ715cs4Q57WsfOMwKwJnCPuNhDLUzYqpPfhe1WDkCKosxrCe5B58VUUhNlzTqHmLNpYJ6zkqVnjDL2OMnl1v6DvY7b5BYYs04khOHoyvZO8ORJvMmjeAqTIbbab8c5yqwPlsgRxe7hjlotCvNB1gdbIXBgU=
+  file: BSODPrank\bin\Debug\*
+  on:
+    repo: Alee14/BSODPrank
+after_deploy: echo 'Deploy finished!'
+after_success:
+  - wget https://raw.githubusercontent.com/k3rn31p4nic/travis-ci-discord-webhook/master/send.sh
+  - chmod +x send.sh
+  - ./send.sh success $WEBHOOK_URL
+after_failure:
+  - wget https://raw.githubusercontent.com/k3rn31p4nic/travis-ci-discord-webhook/master/send.sh
+  - chmod +x send.sh
+  - ./send.sh failure $WEBHOOK_URL
