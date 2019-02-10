@@ -1,3 +1,32 @@
+image: Visual Studio 2015
+configuration: Debug
+platform: Any CPU
+before_build:
+- nuget restore
+
+build:
+  project: BSODPrank.sln
+  verbosity: minimal
+ 
+after_build:
+- cmd: 7z a -tzip "BSODPrank/bin/Debug/BSODPrank.zip" "BSODPrank/bin/Debug/*"
+
+artifacts:
+- path: BSODPrank/bin/Debug/BSODPrank.zip
+  name: DevBuild
+
+deploy:
+    provider: GitHub
+    release: Continuous build
+    auth_token:
+        secure: $env:GITHUB_TOKEN
+    artifact: /.*\.zip/
+    draft: false
+    prerelease: true
+    tag: $(APPVEYOR_REPO_TAG_NAME)
+    on:
+        APPVEYOR_REPO_TAG: true
+
 on_success:
   - ps: Invoke-RestMethod https://raw.githubusercontent.com/DiscordHooks/appveyor-discord-webhook/master/send.ps1 -o send.ps1
   - ps: ./send.ps1 success $env:WEBHOOK_URL
