@@ -17,14 +17,13 @@ artifacts:
 deploy:
     provider: GitHub
     release: Continuous build
-    description: 'BSODPrank $(appveyor_repo_tag_name)'
+    description: 'BSODPrank Development Builds'
     auth_token:
         secure: MeuJU9DaBpnzRdWaqvDfR4M7WhtB90FIpmYkZ5GmS8GyVSWyHT2FAMtDczW3D/JQ
     artifact: /.*\.zip/
     draft: false
     prerelease: true
-    force_update: true
-    tag: $(APPVEYOR_REPO_TAG_NAME)
+    tag: continuous
     on:
         appveyor_repo_tag: true 
 
