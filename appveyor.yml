@@ -19,7 +19,7 @@ deploy:
     release: Continuous build
     description: 'BSODPrank $(appveyor_repo_tag_name)'
     auth_token:
-        secure: $env:GITHUB_TOKEN
+        secure: MeuJU9DaBpnzRdWaqvDfR4M7WhtB90FIpmYkZ5GmS8GyVSWyHT2FAMtDczW3D/JQ
     artifact: /.*\.zip/
     draft: false
     prerelease: true
