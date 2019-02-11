@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -57,6 +58,12 @@
     <Compile Include="BSOD.Designer.cs">
       <DependentUpon>BSOD.cs</DependentUpon>
     </Compile>
+    <Compile Include="Jumpscare.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Jumpscare.Designer.cs">
+      <DependentUpon>Jumpscare.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Boot.resx">
@@ -64,6 +71,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BSOD.resx">
       <DependentUpon>BSOD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Jumpscare.resx">
+      <DependentUpon>Jumpscare.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

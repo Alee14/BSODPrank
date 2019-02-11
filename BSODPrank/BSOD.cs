@@ -31,7 +31,7 @@ namespace BSODPrank
             boot.Show();
             this.Hide();
         }
-
+    
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             System.IO.Stream str = Properties.Resources.bleep;

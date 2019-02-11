@@ -5,7 +5,8 @@ before_build:
 - nuget restore
 
 build:
-  project: BSODPrank.sln
+    verbosity: detailed
+    project: BSODPrank.sln
  
 after_build:
 - cmd: 7z a -tzip "BSODPrank/bin/Debug/BSODPrank.zip" "BSODPrank/bin/Debug/*"
@@ -23,6 +24,7 @@ deploy:
     artifact: /.*\.zip/
     draft: false
     prerelease: true
+    force_update: true
     tag: continuous
     on:
         appveyor_repo_tag: true 
